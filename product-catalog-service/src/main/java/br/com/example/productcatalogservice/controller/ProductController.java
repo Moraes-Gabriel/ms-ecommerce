@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
     @GetMapping()
-    public Product buscarUsuarioLogado(){
+    public Product testeProduto(){
         Product product = new Product();
-        product.setId(1L);
+        product.setId("UH23O123O12");
         product.setName("moraes");
 
         return product;
