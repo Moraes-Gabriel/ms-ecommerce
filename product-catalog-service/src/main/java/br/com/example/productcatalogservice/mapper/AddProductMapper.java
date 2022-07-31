@@ -11,7 +11,14 @@ import java.util.stream.Collectors;
 public class AddProductMapper {
 
     public static Product toEntity(RequestAddProduct request) {
-        return new ModelMapper().map(request, Product.class);
+
+        return Product.builder()
+                .name(request.getName())
+                .price(request.getPrice())
+                .discription(request.getDiscription())
+                .availability(request.getAvailability())
+                .category(request.getCategory())
+                .build();
     }
 
     public static ProductResponse toResponse(Product entity) {
