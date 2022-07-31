@@ -1,20 +1,33 @@
 package br.com.example.productcatalogservice.controller;
 
+import br.com.example.productcatalogservice.controller.request.RequestAddProduct;
+import br.com.example.productcatalogservice.controller.resonse.ProductResponse;
 import br.com.example.productcatalogservice.model.Product;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.example.productcatalogservice.service.AddProductService;
+import br.com.example.productcatalogservice.service.GetAllProductService;
+import br.com.example.productcatalogservice.service.GetProductByIdService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("product")
 public class ProductController {
 
-    @GetMapping()
-    public Product testeProduto(){
-        Product product = new Product();
-        product.setId("UH23O123O12");
-        product.setName("moraes");
+    @Autowired
+    private GetAllProductService getAllProductService;
 
-        return product;
+    @Autowired
+    private GetProductByIdService getProductByIdService;
+
+    @GetMapping()
+    public List<ProductResponse> getAllProduct(){
+        return getAllProductService.getAllProducts();
+    }
+
+    @GetMapping("/{id}")
+    public ProductResponse getProductById(@PathVariable String id){
+        return getProductByIdService.productById(id);
     }
 }
