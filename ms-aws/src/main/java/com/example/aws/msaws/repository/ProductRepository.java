@@ -1,0 +1,9 @@
+package com.example.aws.msaws.repository;
+
+import com.example.aws.msaws.modal.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+}
